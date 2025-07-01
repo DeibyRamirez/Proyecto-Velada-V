@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: FERNANFLOO
   imagen: {fileID: 21300000, guid: 045dae591720c374f97c916cd87b3a64, type: 3}
+  vozPresentacion: {fileID: 8300000, guid: b34a7d83aef49b747b0ac166eaf444da, type: 3}

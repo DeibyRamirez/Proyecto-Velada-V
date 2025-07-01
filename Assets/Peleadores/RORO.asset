@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: RORO
   imagen: {fileID: 21300000, guid: 37c075b531b4ea04aa6cdff0347cf2af, type: 3}
+  vozPresentacion: {fileID: 8300000, guid: f7bd3e5b8d35a4c40acf7ebf0b5517c6, type: 3}

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: RIVES
   imagen: {fileID: 21300000, guid: 64a512b8e9a07474f87cda05db5deb00, type: 3}
+  vozPresentacion: {fileID: 8300000, guid: e769587758e3d0b4daefd8fb5c38afe3, type: 3}

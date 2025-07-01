@@ -22,10 +22,13 @@ public class SeleccionPersonaje : MonoBehaviour
     private DatosPeleador personajeJugador1 = null;
     private DatosPeleador personajeJugador2 = null;
 
+    private AudioSource audioSource;
+
 
 
     void Start()
     {
+        audioSource = gameObject.AddComponent<AudioSource>();
         // Ocultar boton de pelea al inicio...
         pelear.gameObject.SetActive(false);
 
@@ -57,6 +60,14 @@ public class SeleccionPersonaje : MonoBehaviour
             //InstanciarModelo(datos.prefab3D, modeloP2);
             seleccionandoJugador1 = true;
             Debug.Log("Ahora le toca al Jugador 1");
+        }
+
+        if (datos.vozPresentacion != null)
+        {
+            audioSource.Stop();
+            audioSource.clip = datos.vozPresentacion;
+            audioSource.Play();
+
         }
 
         VerificarSeleccionCompleta();

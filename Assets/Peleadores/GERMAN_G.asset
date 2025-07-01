@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: GERMAN G
   imagen: {fileID: 21300000, guid: f05a7db52f16a5c48ae0f6bfb6d00b77, type: 3}
-  prefab3D: {fileID: 0}
+  vozPresentacion: {fileID: 8300000, guid: 457d08f3afc2a1946a02fa8f86506d62, type: 3}
