@@ -25,3 +25,6 @@ UserSettings/
 
 # Logs
 *.log
+
+# Ignorar modelo pesado
+Assets/Modelos 3D/Mapas/Bosque.fbx
