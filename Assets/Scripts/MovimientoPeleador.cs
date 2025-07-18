@@ -10,14 +10,17 @@ public class MovimientoPeleador : MonoBehaviour
     public KeyCode izquierda;
     public KeyCode derecha;
     public KeyCode salto;
+    public KeyCode ataque;
 
     private Rigidbody rb;
+    private Animator animator;
     private bool enSuelo = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-    
+        animator = GetComponent<Animator>();
+
     }
 
     [System.Obsolete]
@@ -25,35 +28,54 @@ public class MovimientoPeleador : MonoBehaviour
     {
         Vector3 movimiento = Vector3.zero;
 
+        bool hayMovimiento = false;
+        bool isAttacking = false;
+
         if (Input.GetKey(izquierda))
         {
-            movimiento += Vector3.left; // Mueve a la izquierda
+            movimiento += Vector3.left;
+            hayMovimiento = true;
         }
-        else if (Input.GetKey(derecha))
+        if (Input.GetKey(derecha))
         {
-            movimiento += Vector3.right; // Mueve a la derecha
+            movimiento += Vector3.right;
+            hayMovimiento = true;
         }
-
-        // Movimiento con profundidad
-
         if (Input.GetKey(KeyCode.W))
         {
-            movimiento += Vector3.forward; // Mueve hacia adelante
+            movimiento += Vector3.forward;
+            hayMovimiento = true;
         }
-        else if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
-            movimiento += Vector3.back; // Mueve hacia atrás
+            movimiento += Vector3.back;
+            hayMovimiento = true;
+        }
+
+        if (Input.GetKeyDown(ataque))
+        {
+            isAttacking = true;
+            animator.SetBool("isHitting", isAttacking);
+        }
+        else
+        {
+            animator.SetBool("isHitting", false);
         }
 
         rb.velocity = new Vector3(movimiento.x * velocidad, rb.velocity.y, movimiento.z * velocidad);
 
-        // Saltar solo si está en el suelo
+        // Actualizar la animación
+        animator.SetBool("isWalking", hayMovimiento);
+
+        
+
         if (Input.GetKeyDown(salto) && enSuelo)
         {
             rb.AddForce(Vector3.up * fuerzasalto, ForceMode.Impulse);
-            enSuelo = false; // Evita saltos múltiples en el aire
+            enSuelo = false;
         }
     }
+
 
 
     private void OnCollisionEnter(Collision collision)

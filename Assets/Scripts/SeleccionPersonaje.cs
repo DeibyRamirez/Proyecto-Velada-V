@@ -1,18 +1,21 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class SeleccionPersonaje : MonoBehaviour
 {
-
     public Transform contenedorGrid;
     public GameObject prefabBoton;
     public DatosPeleador[] listaPeleadores;
 
     public Button pelear;
 
-    public TextMeshProUGUI textoJugador1;
-    public TextMeshProUGUI textoJugador2;
+    public Button peleadorRandom;
+
+    public List<TextMeshProUGUI> textosJugador1;
+    public List<TextMeshProUGUI> textosJugador2;
 
     public Transform modeloP1;
     public Transform modeloP2;
@@ -24,42 +27,39 @@ public class SeleccionPersonaje : MonoBehaviour
 
     private AudioSource audioSource;
 
-
-
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
-        // Ocultar boton de pelea al inicio...
         pelear.gameObject.SetActive(false);
 
-        // Recorre todos los personajes disponibles y crea un botón por cada uno en el grid
         foreach (DatosPeleador datos in listaPeleadores)
         {
-            // Crea una instancia del botón de personaje
             GameObject boton = Instantiate(prefabBoton, contenedorGrid);
             boton.GetComponent<BotonPeleador>().Configurar(datos, this);
         }
+
+        peleadorRandom.onClick.AddListener(PeleadorRandom);
     }
 
     public void Seleccionar(DatosPeleador datos)
     {
-        Debug.Log("Seleccionado: " + datos.nombre + " - Jugador1? " + seleccionandoJugador1);
-
         if (seleccionandoJugador1)
         {
             personajeJugador1 = datos;
-            textoJugador1.text = datos.nombre;
-            // InstanciarModelo(datos.prefab3D, modeloP1);
+
+            foreach (var texto in textosJugador1)
+                texto.text = datos.nombre;
+
             seleccionandoJugador1 = false;
-            Debug.Log("Ahora le toca al Jugador 2");
         }
         else
         {
             personajeJugador2 = datos;
-            textoJugador2.text = datos.nombre;
-            //InstanciarModelo(datos.prefab3D, modeloP2);
+
+            foreach (var texto in textosJugador2)
+                texto.text = datos.nombre;
+
             seleccionandoJugador1 = true;
-            Debug.Log("Ahora le toca al Jugador 1");
         }
 
         if (datos.vozPresentacion != null)
@@ -67,39 +67,73 @@ public class SeleccionPersonaje : MonoBehaviour
             audioSource.Stop();
             audioSource.clip = datos.vozPresentacion;
             audioSource.Play();
-
         }
 
         VerificarSeleccionCompleta();
-
-
-        void VerificarSeleccionCompleta()
-        {
-            if (personajeJugador1 != null && personajeJugador2 != null)
-            {
-                pelear.gameObject.SetActive(true);
-            }
-            else
-            {
-                pelear.gameObject.SetActive(false);
-            }
-        }
     }
 
+    void VerificarSeleccionCompleta()
+    {
+        if (personajeJugador1 != null && personajeJugador2 != null)
+            pelear.gameObject.SetActive(true);
+        else
+            pelear.gameObject.SetActive(false);
+    }
 
-    //void InstanciarModelo(GameObject prefab, Transform zona)
-    // {
-    //     // Elimina cualquier modelo anterior en la zona
-    //    foreach (Transform hijo in zona)
-    //    {//            Destroy(hijo.gameObject);
-    //    }
-    //
-    //        GameObject modelo = Instantiate(prefab, zona);
+    public void PeleadorRandom()
+    {
+        if (listaPeleadores.Length < 2)
+        {
+            Debug.LogWarning("Se nesecita al menos 2 peleadores para la selección aleatoria");
+            return;
+        }
 
-    // Ajusta posición, rotación y escala del modelo para que se vea bien
-    //   modelo.transform.localPosition = Vector3.zero;
-    //   modelo.transform.localRotation = Quaternion.Euler(0, 180, 0);
-    //   modelo.transform.localScale = Vector3.one * 100;
-    //  }
+        int index1 = Random.Range(0, listaPeleadores.Length);
 
+        int index2;
+
+        do
+        {
+            index2 = Random.Range(0, listaPeleadores.Length);
+
+        } while (index2 == index1);
+
+        personajeJugador1 = listaPeleadores[index1];
+        personajeJugador2 = listaPeleadores[index2];
+
+        foreach (var texto in textosJugador1)
+        {
+            texto.text = personajeJugador1.nombre;
+        }
+
+        foreach (var texto in textosJugador2)
+        {
+            texto.text = personajeJugador2.nombre;
+        }
+
+        // Reproduce la voz del jugador 1 primero
+        if (personajeJugador1.vozPresentacion != null)
+        {
+            audioSource.clip = personajeJugador1.vozPresentacion;
+            audioSource.Play();
+
+        }
+
+        if (personajeJugador2.vozPresentacion != null)
+        {
+            StartCoroutine(ReproducirVozLuego(personajeJugador2.vozPresentacion, 1.5f));
+
+        }
+
+        pelear.gameObject.SetActive(true);
+
+    }
+
+    // Me permite un pequeño descanso para los presentación de los peleadores
+    System.Collections.IEnumerator ReproducirVozLuego(AudioClip clip, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
 }

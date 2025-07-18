@@ -34,7 +34,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Armature_003|Golpe con Rodilla
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8924006754388500912, guid: 83d4e67d0d16400479f5a60fddce480b, type: 3}
+  m_Motion: {fileID: 5931746894175737652, guid: da94bfa4001d3984bbb088ceb9ada423, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
