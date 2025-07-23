@@ -11,6 +11,8 @@ public class MovimientoPeleador : MonoBehaviour
     public KeyCode derecha;
     public KeyCode salto;
     public KeyCode ataque;
+    public KeyCode defensa;
+    public KeyCode golpear;
 
     private Rigidbody rb;
     private Animator animator;
@@ -30,6 +32,8 @@ public class MovimientoPeleador : MonoBehaviour
 
         bool hayMovimiento = false;
         bool isAttacking = false;
+        bool isBlocking = false;
+        bool isBoxing = false;
 
         if (Input.GetKey(izquierda))
         {
@@ -52,6 +56,8 @@ public class MovimientoPeleador : MonoBehaviour
             hayMovimiento = true;
         }
 
+        // Ataque
+
         if (Input.GetKeyDown(ataque))
         {
             isAttacking = true;
@@ -60,6 +66,31 @@ public class MovimientoPeleador : MonoBehaviour
         else
         {
             animator.SetBool("isHitting", false);
+        }
+
+        
+
+        if (Input.GetKeyDown(golpear))
+        {
+            isBoxing = true;
+            animator.SetBool("isBoxing", isBoxing);
+        }
+        else
+        {
+            animator.SetBool("isBoxing", false);
+        }
+
+        // Defensa
+
+        if (Input.GetKeyDown(defensa))
+        {
+            isBlocking = true;
+            animator.SetBool("isBlocking", isBlocking);
+
+        }
+        else
+        {
+            animator.SetBool("isBlocking", false);
         }
 
         rb.velocity = new Vector3(movimiento.x * velocidad, rb.velocity.y, movimiento.z * velocidad);
