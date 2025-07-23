@@ -162,7 +162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da94bfa4001d3984bbb088ceb9ada423, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -89.819
+      value: -90.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da94bfa4001d3984bbb088ceb9ada423, type: 3}
       propertyPath: m_LocalPosition.y
@@ -170,7 +170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da94bfa4001d3984bbb088ceb9ada423, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5754
+      value: 2.57
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da94bfa4001d3984bbb088ceb9ada423, type: 3}
       propertyPath: m_LocalRotation.w
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 62995209}
   - component: {fileID: 62995208}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Main Camera Escena Pelea
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1150,13 +1150,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081165872}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.16170712, z: 0, w: 0.9868388}
-  m_LocalPosition: {x: -92.76, y: -0.51, z: 5.24}
+  m_LocalRotation: {x: 0, y: 0.1376001, z: 0, w: 0.9904879}
+  m_LocalPosition: {x: -90.07, y: 0.01, z: 5.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 18.612, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 15.818, z: 0}
 --- !u!114 &1149521370
 MonoBehaviour:
   m_ObjectHideFlags: 0
