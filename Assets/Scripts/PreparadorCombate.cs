@@ -31,4 +31,17 @@ public class Preparadorcombate : MonoBehaviour
 
         controlPantalla.IrPantalla(4);
     }
+
+    [System.Obsolete]
+    public void ReiniciarCombate()
+    {
+        Salud[] peleadores = FindObjectsOfType<Salud>();
+
+        foreach (Salud peleador in peleadores)
+        {
+            peleador.NuevaPelea();
+        }
+        Debug.Log("Combate reiniciado. Todos los peleadores han sido restaurados a su estado inicial.");
+       
+    }
 }

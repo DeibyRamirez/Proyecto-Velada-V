@@ -5,24 +5,44 @@ public class Salud : MonoBehaviour
     public float vidaMaxima = 100f;
     public float vidaActual;
     private Animator animator;
+    private Vector3 posicionInicial;
+    private Quaternion rotacionInicial;
 
     void Start()
     {
         vidaActual = vidaMaxima;
         animator = GetComponent<Animator>();
         animator.SetBool("isDead", false);
+
+        posicionInicial = transform.position;
+        rotacionInicial = transform.rotation;
     }
 
     public void NuevaPelea()
     {
         vidaActual = vidaMaxima;
-        animator.SetBool("isDead", false);
+        animator.ResetTrigger("Die");
+        animator.SetBool("isWinner", false);
 
-        // LIMPIA EL GANADOR ANTERIOR AL INICIAR NUEVA PELEA
+        // 🧠 Fuerza la animación a volver a Idle
+        animator.Play("Idle");
+
+        transform.position = posicionInicial;
+        transform.rotation = rotacionInicial;
+
+        MovimientoPeleador mover = GetComponent<MovimientoPeleador>();
+        if (mover != null)
+        {
+            mover.enabled = true;
+            mover.ReiniciarEstado();
+        }
+
         DatosCombate.nombreGanador = "";
         Debug.Log("Nueva pelea iniciada - Ganador limpiado");
     }
 
+
+    [System.Obsolete]
     public void RecibirDanio(float cantidad)
     {
         vidaActual -= cantidad;
@@ -46,6 +66,7 @@ public class Salud : MonoBehaviour
         }
     }
 
+    [System.Obsolete]
     void Perdedor()
     {
         // DEBUGGING EXTRA
@@ -58,7 +79,7 @@ public class Salud : MonoBehaviour
         // DETERMINA EL NOMBRE DEL PERSONAJE PERDEDOR
         string nombrePerdedor = DeterminarNombrePersonaje(gameObject.name);
         Debug.Log($"El personaje {nombrePerdedor} ({gameObject.name}) ha sido derrotado.");
-        animator.SetBool("isDead", true);
+
 
         // BUSCA AL GANADOR SOLO SI AUN NO HAY UNO DEFINIDO
         if (string.IsNullOrEmpty(DatosCombate.nombreGanador))
@@ -96,7 +117,7 @@ public class Salud : MonoBehaviour
         if (controlPantalla != null)
         {
             controlPantalla.SetGanador(DatosCombate.nombreGanador);
-            controlPantalla.IrPantalla(5);
+            StartCoroutine(EsperarYCambiar(controlPantalla));
         }
     }
 
@@ -143,4 +164,11 @@ public class Salud : MonoBehaviour
         Debug.LogError($"Nombres disponibles en DatosCombate - J1: '{DatosCombate.nombreJugador1}', J2: '{DatosCombate.nombreJugador2}'");
         return nombreGameObject;
     }
+
+    private System.Collections.IEnumerator EsperarYCambiar(ControlPantalla controlPantalla)
+    {
+        yield return new WaitForSeconds(10f); // Espera 10 segundos
+        controlPantalla.IrPantalla(5);        // Va a la pantalla 5
+    }
+
 }

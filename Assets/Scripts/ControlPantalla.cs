@@ -6,7 +6,7 @@ public class ControlPantalla : MonoBehaviour
     public GameObject rawImagenFondo;
     public ControlVideo controladorVideo;
     public TMPro.TMP_Text textoGanador;
-    
+
     private int pantallaActual = 0;
 
     void Start()
@@ -22,7 +22,7 @@ public class ControlPantalla : MonoBehaviour
 
         MostrarPantalla(pantallaActual);
     }
-    
+
     public void AnteriorPantalla()
     {
         pantallaActual--;
@@ -50,7 +50,7 @@ public class ControlPantalla : MonoBehaviour
         {
             if (!string.IsNullOrEmpty(DatosCombate.nombreGanador))
             {
-                textoGanador.text = $"¡{DatosCombate.nombreGanador} ha ganado la pelea!";
+                textoGanador.text = $" {DatosCombate.nombreGanador} ha ganado la pelea..!";
                 Debug.Log($"Mostrando ganador: {DatosCombate.nombreGanador}");
             }
             else
@@ -60,16 +60,7 @@ public class ControlPantalla : MonoBehaviour
             }
         }
 
-        if (pantallaActual == 4)
-        {
-            controladorVideo.ActualizarVideo(-1);
-            rawImagenFondo.SetActive(false);
-        }
-        else
-        {
-            controladorVideo.ActualizarVideo(pantallaActual);
-            rawImagenFondo.SetActive(true);
-        }
+
     }
 
     public void SetGanador(string nombre)

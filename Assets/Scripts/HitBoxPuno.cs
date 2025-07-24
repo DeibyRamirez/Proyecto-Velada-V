@@ -22,6 +22,7 @@ public class HitBoxPuno : MonoBehaviour
         }
     }
 
+    [System.Obsolete]
     void OnTriggerEnter(Collider other)
     {
         if (animator != null)

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class MovimientoPeleador : MonoBehaviour
 {
-    // Valores que se ingresar por dafault al codigo.
     public float velocidad = 5f;
     public float fuerzasalto = 7f;
 
@@ -14,107 +13,130 @@ public class MovimientoPeleador : MonoBehaviour
     public KeyCode defensa;
     public KeyCode golpear;
 
+    public Transform oponente; // ← NUEVO: para saber hacia dónde moverse
+
     private Rigidbody rb;
     private Animator animator;
     private bool enSuelo = true;
+    private bool yaMurio = false;
+    Salud salud;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        salud = GetComponent<Salud>();
 
+        animator.SetBool("isWinner", false);
     }
 
     [System.Obsolete]
     void Update()
     {
         Vector3 movimiento = Vector3.zero;
-
         bool hayMovimiento = false;
-        bool isAttacking = false;
-        bool isBlocking = false;
-        bool isBoxing = false;
 
-        if (Input.GetKey(izquierda))
+        // === Movimiento relativo al oponente ===
+        if (oponente != null)
         {
-            movimiento += Vector3.left;
-            hayMovimiento = true;
-        }
-        if (Input.GetKey(derecha))
-        {
-            movimiento += Vector3.right;
-            hayMovimiento = true;
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            movimiento += Vector3.forward;
-            hayMovimiento = true;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            movimiento += Vector3.back;
-            hayMovimiento = true;
-        }
+            Vector3 frente = oponente.position - transform.position;
+            frente.y = 0;
+            frente.Normalize();
+            Vector3 derechaRelativa = Vector3.Cross(Vector3.up, frente).normalized;
 
-        // Ataque
+            if (Input.GetKey(izquierda))
+            {
+                movimiento -= derechaRelativa;
+                hayMovimiento = true;
+            }
+            if (Input.GetKey(derecha))
+            {
+                movimiento += derechaRelativa;
+                hayMovimiento = true;
+            }
 
-        if (Input.GetKeyDown(ataque))
-        {
-            isAttacking = true;
-            animator.SetBool("isHitting", isAttacking);
-        }
-        else
-        {
-            animator.SetBool("isHitting", false);
-        }
+            // Movimiento hacia delante/atrás (opcional)
+            if (Input.GetKey(KeyCode.W))
+            {
+                movimiento += frente;
+                hayMovimiento = true;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                movimiento -= frente;
+                hayMovimiento = true;
+            }
 
-        
-
-        if (Input.GetKeyDown(golpear))
-        {
-            isBoxing = true;
-            animator.SetBool("isBoxing", isBoxing);
-        }
-        else
-        {
-            animator.SetBool("isBoxing", false);
+            // Rotar hacia el oponente automáticamente
+            if (frente != Vector3.zero)
+            {
+                Quaternion rotacion = Quaternion.LookRotation(frente);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotacion, Time.deltaTime * 10f);
+            }
         }
 
-        // Defensa
-
-        if (Input.GetKeyDown(defensa))
-        {
-            isBlocking = true;
-            animator.SetBool("isBlocking", isBlocking);
-
-        }
-        else
-        {
-            animator.SetBool("isBlocking", false);
-        }
-
-        rb.velocity = new Vector3(movimiento.x * velocidad, rb.velocity.y, movimiento.z * velocidad);
-
-        // Actualizar la animación
+        // === Acciones ===
         animator.SetBool("isWalking", hayMovimiento);
 
-        
+        animator.SetBool("isHitting", Input.GetKeyDown(ataque));
+        animator.SetBool("isBoxing", Input.GetKeyDown(golpear));
+        animator.SetBool("isBlocking", Input.GetKey(defensa));
+
+        rb.velocity = new Vector3(movimiento.x * velocidad, rb.velocity.y, movimiento.z * velocidad);
 
         if (Input.GetKeyDown(salto) && enSuelo)
         {
             rb.AddForce(Vector3.up * fuerzasalto, ForceMode.Impulse);
             enSuelo = false;
         }
+
+        // === Verificar muerte ===
+        if (!yaMurio && salud.vidaActual <= 0)
+        {
+            yaMurio = true;
+            animator.SetTrigger("Die");
+            Debug.Log("El peleador ha sido derrotado.");
+            this.enabled = false;
+
+            GameObject[] personajes = GameObject.FindGameObjectsWithTag("Personaje");
+            foreach (GameObject personaje in personajes)
+            {
+                if (personaje != this.gameObject)
+                {
+                    Salud saludOtro = personaje.GetComponent<Salud>();
+                    if (saludOtro != null && saludOtro.vidaActual > 0)
+                    {
+                        Animator otroAnimator = personaje.GetComponent<Animator>();
+                        if (otroAnimator != null)
+                        {
+                            otroAnimator.SetBool("isWinner", true);
+                        }
+                    }
+                }
+            }
+        }
     }
 
+    public void ReiniciarEstado()
+    {
+        yaMurio = false;
+        enSuelo = true;
 
+        // Reiniciar animaciones
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isHitting", false);
+        animator.SetBool("isBoxing", false);
+        animator.SetBool("isBlocking", false);
+        animator.SetBool("isWinner", false);
+        animator.ResetTrigger("Die");
+
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Suelo"))
         {
-            enSuelo = true; // Permite saltar nuevamente al tocar el suelo
+            enSuelo = true;
         }
     }
-
 }

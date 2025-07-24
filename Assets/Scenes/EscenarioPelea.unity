@@ -363,10 +363,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jugador1: {fileID: 1603414262}
   jugador2: {fileID: 1318939577}
-  offset: {x: 0, y: 3, z: -6}
-  suavizado: 5
-  distanciaMinima: 6
-  distanciaMaxima: 10
+  altura: 5
+  distanciaBase: 7
+  distanciaExtra: 5
+  suavizadoPosicion: 3
+  suavizadoRotacion: 5
+  limiteMinZ: -20
+  limiteMaxZ: -5
 --- !u!114 &62995209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1255,6 +1258,7 @@ MonoBehaviour:
   ataque: 257
   defensa: 256
   golpear: 258
+  oponente: {fileID: 1603414262}
 --- !u!1001 &1232969576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2370,6 +2374,7 @@ MonoBehaviour:
   ataque: 120
   defensa: 118
   golpear: 101
+  oponente: {fileID: 1318939577}
 --- !u!114 &1603414269
 MonoBehaviour:
   m_ObjectHideFlags: 0
