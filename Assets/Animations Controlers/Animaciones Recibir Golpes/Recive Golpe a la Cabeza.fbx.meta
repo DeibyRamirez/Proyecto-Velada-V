@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2aeffcc4b682d5944a2ae032c2be66ac
+guid: 6e24c5381f03c8443b80b54b8f6bd89f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Getting Up
+      name: Recive Golpe a la Cabeza
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 258
+      lastFrame: 37
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

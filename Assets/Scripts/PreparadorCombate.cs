@@ -41,7 +41,15 @@ public class Preparadorcombate : MonoBehaviour
         {
             peleador.NuevaPelea();
         }
+
+        // Reiniciar sistema de rondas
+        ControlRondas controlRondas = FindObjectOfType<ControlRondas>();
+        if (controlRondas != null)
+        {
+            controlRondas.ReiniciarRondas();
+        }
+
         Debug.Log("Combate reiniciado. Todos los peleadores han sido restaurados a su estado inicial.");
-       
+
     }
 }

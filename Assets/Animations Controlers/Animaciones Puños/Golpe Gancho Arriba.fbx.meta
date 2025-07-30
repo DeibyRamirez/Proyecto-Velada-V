@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2aeffcc4b682d5944a2ae032c2be66ac
+guid: 78da8ab3746fd7145a5054b1c8728257
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Getting Up
+      name: Golpe Gancho Arriba
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 258
+      lastFrame: 66
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

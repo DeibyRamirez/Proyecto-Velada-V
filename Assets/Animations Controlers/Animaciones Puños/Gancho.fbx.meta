@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2aeffcc4b682d5944a2ae032c2be66ac
+guid: 900e9c33bb747b14d9ddfbd0c7106df4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Getting Up
+      name: Gancho
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 258
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
