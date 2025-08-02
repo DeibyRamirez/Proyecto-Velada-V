@@ -1,17 +1,25 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ControlMusica : MonoBehaviour
 {
     public AudioSource audioSource;         // Solo un AudioSource en la escena
-    public AudioClip[] canciones;           // Aquí sí puedes arrastrar los .mp3
+    public AudioClip[] canciones;
+    public AudioClip[] audiosGente;
+    public AudioClip[] audiosCampana;           // Aquí sí puedes arrastrar los .mp3
+
+    public ControlRondas controlRondas;
     public Button botonmusica;
     public Slider sliderVolumen;
     public Sprite iconiEncendido;
     public Sprite iconoApagado;
 
+
     private bool musicaEncendida = true;
     private AudioClip cancionActual;
+    private AudioClip audioActual;
+    private AudioClip audioCampana;
 
     void Start()
     {
@@ -75,4 +83,37 @@ public class ControlMusica : MonoBehaviour
         if (imagenBoton != null)
             imagenBoton.sprite = musicaEncendida ? iconiEncendido : iconoApagado;
     }
+
+    public void ReproducirAudioGente()
+    {
+        int aleatorio = Random.Range(0, audiosGente.Length);
+        audioActual = audiosGente[aleatorio];
+        audioSource.clip = audioActual;
+    }
+
+    public void ReproducirCampanaPorRonda(int ronda)
+    {
+        StartCoroutine(SonarCampana(ronda));
+    }
+
+    IEnumerator SonarCampana(int ronda)
+    {
+        if (audioSource == null || audiosCampana.Length == 0)
+            yield break;
+
+        if (ronda == 1)
+        {
+            audioSource.PlayOneShot(audiosCampana[0]);  // un golpe
+        }
+        else if (ronda == 2)
+        {
+            audioSource.PlayOneShot(audiosCampana[1]);  // dos golpes
+
+        }
+        else if (ronda == 3 && audiosCampana.Length > 1)
+        {
+            audioSource.PlayOneShot(audiosCampana[1]);  // tres golpes
+        }
+    }
+
 }

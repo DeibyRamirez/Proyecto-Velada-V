@@ -39,32 +39,32 @@ public class MovimientoPeleador : MonoBehaviour
 
         // — MOVIMIENTO Y SALTO —
         mapa["Mover"].performed += ctx => movimiento = ctx.ReadValue<Vector2>();
-        mapa["Mover"].canceled  += ctx => movimiento = Vector2.zero;
+        mapa["Mover"].canceled += ctx => movimiento = Vector2.zero;
         mapa["Saltar"].performed += ctx => saltoPresionado = true;
 
         // — ATAQUES SIMPLES (Triggers) —
-        AsignarTrigger("Golpe Gancho Arriba",    "GanchoArriba");
-        AsignarTrigger("Golpe Bajo",             "GolpeBajo");
-        AsignarTrigger("Patada Voladora Combo",  "PatadaVoladora");
-        AsignarTrigger("Patada con Salto",       "PatadaConSalto");
-        AsignarTrigger("Amague y Patada",        "AmaguePatada");
-        AsignarTrigger("Amague y Patada Avanzada","AmaguePatadaAvanzada");
-        AsignarTrigger("Patada a la Cabeza",     "PatadaCabeza");
-        AsignarTrigger("Gancho Derecho",         "GanchoDerecho");
-        AsignarTrigger("Golpes de Rodilla Combo","RodillaCombo");
-        AsignarTrigger("Fireball",               "Fireball");
+        AsignarTrigger("Golpe Gancho Arriba", "GanchoArriba");
+        AsignarTrigger("Golpe Bajo", "GolpeBajo");
+        AsignarTrigger("Patada Voladora Combo", "PatadaVoladora");
+        AsignarTrigger("Patada con Salto", "PatadaConSalto");
+        AsignarTrigger("Amague y Patada", "AmaguePatada");
+        AsignarTrigger("Amague y Patada Avanzada", "AmaguePatadaAvanzada");
+        AsignarTrigger("Patada a la Cabeza", "PatadaCabeza");
+        AsignarTrigger("Gancho Derecho", "GanchoDerecho");
+        AsignarTrigger("Golpes de Rodilla Combo", "RodillaCombo");
+        AsignarTrigger("Fireball", "Fireball");
 
         // — BLOQUEO (Bool) —
         mapa["Bloquear"].performed += ctx => animator.SetBool("estaBloqueando", true);
-        mapa["Bloquear"].canceled  += ctx => animator.SetBool("estaBloqueando", false);
+        mapa["Bloquear"].canceled += ctx => animator.SetBool("estaBloqueando", false);
 
         // — COMBOS: también registran en buffer —
-        mapa["Golpe Gancho Arriba"].performed      += ctx => RegistrarBoton("C");
-        mapa["Golpe Bajo"].performed               += ctx => RegistrarBoton("V");
-        mapa["Patada a la Cabeza"].performed       += ctx => RegistrarBoton("X");
-        mapa["Patada con Salto"].performed         += ctx => RegistrarBoton("J");
+        mapa["Golpe Gancho Arriba"].performed += ctx => RegistrarBoton("C");
+        mapa["Golpe Bajo"].performed += ctx => RegistrarBoton("V");
+        mapa["Patada a la Cabeza"].performed += ctx => RegistrarBoton("X");
+        mapa["Patada con Salto"].performed += ctx => RegistrarBoton("J");
         mapa["Amague y Patada Avanzada"].performed += ctx => RegistrarBoton("K");
-        mapa["Patada Voladora Combo"].performed    += ctx => RegistrarBoton("U");
+        mapa["Patada Voladora Combo"].performed += ctx => RegistrarBoton("U");
     }
 
     void AsignarTrigger(string accion, string trigger)
@@ -114,7 +114,7 @@ public class MovimientoPeleador : MonoBehaviour
         }
     }
 
-    void OnEnable()  => mapa.Enable();
+    void OnEnable() => mapa.Enable();
     void OnDisable() => mapa.Disable();
 
     void Start()
@@ -156,7 +156,7 @@ public class MovimientoPeleador : MonoBehaviour
                 Vector3 derechaRel = Vector3.Cross(Vector3.up, frente).normalized;
 
                 mov3D += derechaRel * movimiento.x;
-                mov3D += frente     * movimiento.y;
+                mov3D += frente * movimiento.y;
 
                 if (frente != Vector3.zero)
                     transform.rotation = Quaternion.Slerp(Quaternion.LookRotation(frente), transform.rotation, Time.deltaTime * 10f);
@@ -207,4 +207,13 @@ public class MovimientoPeleador : MonoBehaviour
         animator.SetBool("esGanador", false);
         animator.ResetTrigger("Muerto");
     }
+
+    public void ConfigurarJugador(bool activo)
+    {
+        if (activo)
+            mapa.Enable();
+        else
+            mapa.Disable();
+    }
+
 }

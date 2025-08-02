@@ -208,6 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 27921156}
   - component: {fileID: 27921155}
+  - component: {fileID: 27921157}
   m_Layer: 0
   m_Name: ControladorMusica
   m_TagString: Untagged
@@ -327,6 +328,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &27921157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27921154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986c5064a7b0b6a46bf765064cc9894b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 27921155}
+  canciones:
+  - {fileID: 8300000, guid: a00828428d37b9c469413673db8df92a, type: 3}
+  - {fileID: 8300000, guid: 135c2902c6e1a374583f7e5d78bba350, type: 3}
+  - {fileID: 8300000, guid: f527b97369432dd42897f23abb60a148, type: 3}
+  - {fileID: 8300000, guid: b0b886f1a9133c7428f66b1461a224ca, type: 3}
+  - {fileID: 8300000, guid: 028fbe764a507cc43a53ab201b554639, type: 3}
+  audiosGente:
+  - {fileID: 8300000, guid: 7439bbd7dc76b46468757e73a56c4cd8, type: 3}
+  - {fileID: 8300000, guid: 1b7504d903043fa42a3f13bf5a34b3dc, type: 3}
+  - {fileID: 8300000, guid: 02930384f3f0e4d4eb1b741d5c0d47bc, type: 3}
+  audiosCampana:
+  - {fileID: 8300000, guid: ec9959c44c8a9a94c9128d814e08c02a, type: 3}
+  - {fileID: 8300000, guid: b21b3af9a9f341341967e0d0d58c963a, type: 3}
+  - {fileID: 8300000, guid: f83cb2d282a4c3646b087fb7d6f01eef, type: 3}
+  controlRondas: {fileID: 484524627}
+  botonmusica: {fileID: 1555526685}
+  sliderVolumen: {fileID: 1833440331}
+  iconiEncendido: {fileID: 1525050435, guid: 3ff60c495469c594e8eb7886330cacc3, type: 3}
+  iconoApagado: {fileID: -727243499, guid: 3ff60c495469c594e8eb7886330cacc3, type: 3}
 --- !u!1 &31607175
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,12 +726,14 @@ RectTransform:
   m_Children:
   - {fileID: 1197466382}
   - {fileID: 2017700450}
+  - {fileID: 330980220}
+  - {fileID: 1169427928}
   m_Father: {fileID: 1296510422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -498, y: -234.87}
-  m_SizeDelta: {x: 649.9625, y: 205.74}
+  m_AnchoredPosition: {x: -357.43, y: -234.87}
+  m_SizeDelta: {x: 931.1, y: 205.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &72435385
 MonoBehaviour:
@@ -747,6 +782,18 @@ MonoBehaviour:
       - m_Target: {fileID: 667545866}
         m_TargetAssemblyTypeName: ControlPantalla, Assembly-CSharp
         m_MethodName: SiguientePantalla
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1388664620}
+        m_TargetAssemblyTypeName: Preparadorcombate, Assembly-CSharp
+        m_MethodName: JugarContraJugador
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3127,14 +3174,14 @@ RectTransform:
   m_GameObject: {fileID: 330980219}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.53081375, y: 0.53081375, z: 0.53081375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2017700450}
+  m_Father: {fileID: 72435384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 166.7605, y: -15.762314}
+  m_AnchoredPosition: {x: -70, y: -13}
   m_SizeDelta: {x: 419.95, y: 144.5883}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &330980221
@@ -3157,7 +3204,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ONLINE
+  m_text: MULTIJUGADOR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -3222,7 +3269,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -176.32391, y: -37.215424, z: 67.92987, w: 0}
+  m_margin: {x: -176.32391, y: -37.215424, z: -298.75964, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4504,6 +4551,7 @@ MonoBehaviour:
   duracionRound: 120
   textoReloj: {fileID: 1208681463}
   textoRondas: {fileID: 639772039}
+  controlMusica: {fileID: 27921157}
 --- !u!4 &484524628
 Transform:
   m_ObjectHideFlags: 0
@@ -6128,15 +6176,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.8839, y: 1.8839, z: 1.8839}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 727020254}
-  - {fileID: 1371865727}
+  m_Children: []
   m_Father: {fileID: 1361444936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223.01868, y: 22.130005}
-  m_SizeDelta: {x: 78, y: 72}
+  m_AnchoredPosition: {x: -361.58447, y: 22.130005}
+  m_SizeDelta: {x: 79.5336, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &687359914
 MonoBehaviour:
@@ -6334,15 +6380,15 @@ RectTransform:
   m_GameObject: {fileID: 727020253}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8839, y: 1.8839, z: 1.8839}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 687359913}
+  m_Father: {fileID: 1361444936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -361.58447, y: 22.130005}
+  m_SizeDelta: {x: -851.57025, y: -133.73999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &727020255
 MonoBehaviour:
@@ -9220,15 +9266,15 @@ RectTransform:
   m_GameObject: {fileID: 1169427927}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8839, y: 1.8839, z: 1.8839}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2017700450}
+  m_Father: {fileID: 72435384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -363.58875, y: 22}
+  m_SizeDelta: {x: -855.6, y: -127.73999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1169427929
 MonoBehaviour:
@@ -9513,8 +9559,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -194.24246, y: 0}
+  m_SizeDelta: {x: -388.4824, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1197466383
 MonoBehaviour:
@@ -11128,12 +11174,14 @@ RectTransform:
   m_Children:
   - {fileID: 1658524678}
   - {fileID: 687359913}
+  - {fileID: 727020254}
+  - {fileID: 1371865727}
   m_Father: {fileID: 1296510422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -498, y: 65}
-  m_SizeDelta: {x: 649.9625, y: 205.74}
+  m_AnchoredPosition: {x: -357.42938, y: 65}
+  m_SizeDelta: {x: 931.1038, y: 205.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1361444937
 MonoBehaviour:
@@ -11182,6 +11230,18 @@ MonoBehaviour:
       - m_Target: {fileID: 667545866}
         m_TargetAssemblyTypeName: ControlPantalla, Assembly-CSharp
         m_MethodName: SiguientePantalla
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1388664620}
+        m_TargetAssemblyTypeName: Preparadorcombate, Assembly-CSharp
+        m_MethodName: JugarContraCPU
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11256,15 +11316,15 @@ RectTransform:
   m_GameObject: {fileID: 1371865726}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.53081375, y: 0.53081375, z: 0.53081375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 687359913}
+  m_Father: {fileID: 1361444936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 166.7605, y: -3.0769196}
-  m_SizeDelta: {x: 419.95, y: 102.7911}
+  m_AnchoredPosition: {x: -15, y: 22.13}
+  m_SizeDelta: {x: 428.2068, y: 102.7911}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1371865728
 MonoBehaviour:
@@ -11286,7 +11346,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: OFFLINE
+  m_text: 1 JUGADOR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -11351,7 +11411,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -172.3388, y: -25.236328, z: 20.297974, w: -40.648132}
+  m_margin: {x: -172.3388, y: -25.236328, z: -161.15857, w: -40.648132}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -12579,7 +12639,6 @@ GameObject:
   - component: {fileID: 1555526687}
   - component: {fileID: 1555526686}
   - component: {fileID: 1555526685}
-  - component: {fileID: 1555526684}
   m_Layer: 5
   m_Name: Musica
   m_TagString: Untagged
@@ -12607,29 +12666,6 @@ RectTransform:
   m_AnchoredPosition: {x: -3.6745605, y: 2.3421936}
   m_SizeDelta: {x: 88.0008, y: 89.0065}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1555526684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555526682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 986c5064a7b0b6a46bf765064cc9894b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 27921155}
-  canciones:
-  - {fileID: 8300000, guid: a00828428d37b9c469413673db8df92a, type: 3}
-  - {fileID: 8300000, guid: 135c2902c6e1a374583f7e5d78bba350, type: 3}
-  - {fileID: 8300000, guid: f527b97369432dd42897f23abb60a148, type: 3}
-  - {fileID: 8300000, guid: b0b886f1a9133c7428f66b1461a224ca, type: 3}
-  - {fileID: 8300000, guid: 028fbe764a507cc43a53ab201b554639, type: 3}
-  botonmusica: {fileID: 1555526685}
-  sliderVolumen: {fileID: 1833440331}
-  iconiEncendido: {fileID: 1525050435, guid: 3ff60c495469c594e8eb7886330cacc3, type: 3}
-  iconoApagado: {fileID: -727243499, guid: 3ff60c495469c594e8eb7886330cacc3, type: 3}
 --- !u!114 &1555526685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13230,8 +13266,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -134.18097, y: 0}
+  m_SizeDelta: {x: -268.36212, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1658524679
 MonoBehaviour:
@@ -15263,14 +15299,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.8839, y: 1.8839, z: 1.8839}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 330980220}
-  - {fileID: 1169427928}
+  m_Children: []
   m_Father: {fileID: 72435384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223.01868, y: 17}
+  m_AnchoredPosition: {x: -363.58862, y: 22}
   m_SizeDelta: {x: 75.5, y: 78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2017700451

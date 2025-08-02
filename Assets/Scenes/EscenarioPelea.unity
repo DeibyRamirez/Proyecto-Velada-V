@@ -467,18 +467,53 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!1 &92198131 stripped
+--- !u!1 &128636001 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: -1703473491307067327, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
+  m_CorrespondingSourceObject: {fileID: -751476226918971245, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
   m_PrefabInstance: {fileID: 1232969576}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &92198133
+--- !u!65 &128636003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128636001}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.20761465, y: 0.3886277, z: 0.19021542}
+  m_Center: {x: -0.011490586, y: 0.062019072, z: -0.013642847}
+--- !u!114 &128636005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92198131}
+  m_GameObject: {fileID: 128636001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc7899b692d27248adb655d2a2d6f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zona: 7
+  multiplicadorDanio: 0.5
+--- !u!114 &128636007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128636001}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6aed9b2d6b5b5a46be168967a915886, type: 3}
@@ -506,67 +541,6 @@ MonoBehaviour:
   - RodillaCombo
   - Fireball
   animator: {fileID: 1603414270}
---- !u!65 &92198134
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92198131}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &128636001 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -751476226918971245, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-  m_PrefabInstance: {fileID: 1232969576}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &128636003
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128636001}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.20761465, y: 0.3886277, z: 0.19021542}
-  m_Center: {x: -0.011490586, y: 0.062019072, z: -0.013642847}
---- !u!114 &128636005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128636001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fc7899b692d27248adb655d2a2d6f3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zona: 7
-  multiplicadorDanio: 0.5
 --- !u!1 &137378530 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6170625038081293824, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
@@ -767,12 +741,46 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.2122648, y: 0.37341958, z: 0.18912873}
   m_Center: {x: 0.006977863, y: 0.04276771, z: -0.013510233}
+--- !u!114 &235285094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235285089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6aed9b2d6b5b5a46be168967a915886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  danio: 10
+  animacionesAtaque:
+  - Golpe Gancho Arriba
+  - GanchoArriba
+  - Golpe Bajo
+  - GolpeBajo
+  - Patada Voladora Combo
+  - PatadaVoladora
+  - Patada con Salto
+  - PatadaConSalto
+  - Amague y Patada
+  - AmaguePatada
+  - Amague y Patada Avanzada
+  - AmaguePatadaAvanzada
+  - Patada a la Cabeza
+  - PatadaCabeza
+  - Gancho Derecho
+  - GanchoDerecho
+  - Golpes de Rodilla Combo
+  - RodillaCombo
+  - Fireball
+  animator: {fileID: 347989630}
 --- !u!1 &314421374 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8817898888258712963, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
@@ -830,7 +838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59fdbf53210457e40a0edc47d993a37a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMaxima: 100
+  vidaMaxima: 110
   vidaActual: 100
 --- !u!136 &347989626
 CapsuleCollider:
@@ -922,6 +930,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
   m_PrefabInstance: {fileID: 797400948}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &347989632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347989624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9c772a91abe144684455eac7d38b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objetivo: {fileID: 1603414262}
+  velocidad: 4
+  distanciaAtaque: 2
+  rangoAtaque: {x: 2, y: 5}
+  rangoCombo: {x: 4, y: 8}
+  margenSeguridad: 1
+  probRetiradaBase: 0.3
 --- !u!1 &397550773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,12 +1097,46 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.28174508, y: 0.34615362, z: 0.2700025}
   m_Center: {x: 0.0032559426, y: 0.15803874, z: 0.06658474}
+--- !u!114 &484565573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484565568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6aed9b2d6b5b5a46be168967a915886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  danio: 10
+  animacionesAtaque:
+  - Golpe Gancho Arriba
+  - GanchoArriba
+  - Golpe Bajo
+  - GolpeBajo
+  - Patada Voladora Combo
+  - PatadaVoladora
+  - Patada con Salto
+  - PatadaConSalto
+  - Amague y Patada
+  - AmaguePatada
+  - Amague y Patada Avanzada
+  - AmaguePatadaAvanzada
+  - Patada a la Cabeza
+  - PatadaCabeza
+  - Gancho Derecho
+  - GanchoDerecho
+  - Golpes de Rodilla Combo
+  - RodillaCombo
+  - Fireball
+  animator: {fileID: 1603414270}
 --- !u!1 &631885982 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1781356600409242780, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
@@ -1570,6 +1631,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 347989625}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 347989632}
     - targetCorrespondingSourceObject: {fileID: 2431954984272822612, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 172662203}
@@ -1585,12 +1649,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2084811680363313996, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 235285091}
-    - targetCorrespondingSourceObject: {fileID: -1703473491307067327, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
+    - targetCorrespondingSourceObject: {fileID: -2084811680363313996, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1713477830}
-    - targetCorrespondingSourceObject: {fileID: -1703473491307067327, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1713477831}
+      addedObject: {fileID: 235285094}
     - targetCorrespondingSourceObject: {fileID: -4332706925441422008, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 18543367}
@@ -1606,12 +1667,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -751476226918971245, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 965251732}
-    - targetCorrespondingSourceObject: {fileID: -1200856079203341021, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
+    - targetCorrespondingSourceObject: {fileID: -751476226918971245, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1309261975}
-    - targetCorrespondingSourceObject: {fileID: -1200856079203341021, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1309261976}
+      addedObject: {fileID: 965251735}
     - targetCorrespondingSourceObject: {fileID: -7657966619581158213, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 421100124}
@@ -1639,15 +1697,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -5195048882033904264, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1463383608}
+    - targetCorrespondingSourceObject: {fileID: -5195048882033904264, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1463383611}
     - targetCorrespondingSourceObject: {fileID: -1781356600409242780, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 631885984}
-    - targetCorrespondingSourceObject: {fileID: 2898355158428612036, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1600576683}
-    - targetCorrespondingSourceObject: {fileID: 2898355158428612036, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1600576684}
     - targetCorrespondingSourceObject: {fileID: -9070493210130169274, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1470413008}
@@ -1878,7 +1933,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1898,6 +1953,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zona: 8
   multiplicadorDanio: 0.5
+--- !u!114 &947552179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947552173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6aed9b2d6b5b5a46be168967a915886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  danio: 10
+  animacionesAtaque:
+  - Golpe Gancho Arriba
+  - GanchoArriba
+  - Golpe Bajo
+  - GolpeBajo
+  - Patada Voladora Combo
+  - PatadaVoladora
+  - Patada con Salto
+  - PatadaConSalto
+  - Amague y Patada
+  - AmaguePatada
+  - Amague y Patada Avanzada
+  - AmaguePatadaAvanzada
+  - Patada a la Cabeza
+  - PatadaCabeza
+  - Gancho Derecho
+  - GanchoDerecho
+  - Golpes de Rodilla Combo
+  - RodillaCombo
+  - Fireball
+  animator: {fileID: 1603414270}
 --- !u!1 &965251730 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -751476226918971245, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
@@ -1932,12 +2021,46 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.20761465, y: 0.3886277, z: 0.19021542}
   m_Center: {x: -0.011490586, y: 0.062019072, z: -0.013642847}
+--- !u!114 &965251735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965251730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6aed9b2d6b5b5a46be168967a915886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  danio: 10
+  animacionesAtaque:
+  - Golpe Gancho Arriba
+  - GanchoArriba
+  - Golpe Bajo
+  - GolpeBajo
+  - Patada Voladora Combo
+  - PatadaVoladora
+  - Patada con Salto
+  - PatadaConSalto
+  - Amague y Patada
+  - AmaguePatada
+  - Amague y Patada Avanzada
+  - AmaguePatadaAvanzada
+  - Patada a la Cabeza
+  - PatadaCabeza
+  - Gancho Derecho
+  - GanchoDerecho
+  - Golpes de Rodilla Combo
+  - RodillaCombo
+  - Fireball
+  animator: {fileID: 347989630}
 --- !u!1 &967721511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2670,12 +2793,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2084811680363313996, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 947552177}
-    - targetCorrespondingSourceObject: {fileID: -1703473491307067327, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
+    - targetCorrespondingSourceObject: {fileID: -2084811680363313996, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 92198133}
-    - targetCorrespondingSourceObject: {fileID: -1703473491307067327, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 92198134}
+      addedObject: {fileID: 947552179}
     - targetCorrespondingSourceObject: {fileID: -4332706925441422008, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1667593156}
@@ -2691,12 +2811,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -751476226918971245, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 128636005}
-    - targetCorrespondingSourceObject: {fileID: -1200856079203341021, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
+    - targetCorrespondingSourceObject: {fileID: -751476226918971245, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1910283945}
-    - targetCorrespondingSourceObject: {fileID: -1200856079203341021, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1910283946}
+      addedObject: {fileID: 128636007}
     - targetCorrespondingSourceObject: {fileID: -7657966619581158213, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1902183039}
@@ -2724,15 +2841,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -5195048882033904264, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 484565570}
+    - targetCorrespondingSourceObject: {fileID: -5195048882033904264, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 484565573}
     - targetCorrespondingSourceObject: {fileID: -1781356600409242780, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1404251040}
-    - targetCorrespondingSourceObject: {fileID: 2898355158428612036, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1470534232}
-    - targetCorrespondingSourceObject: {fileID: 2898355158428612036, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1470534233}
     - targetCorrespondingSourceObject: {fileID: -9070493210130169274, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
       insertIndex: -1
       addedObject: {fileID: 667894799}
@@ -2846,66 +2960,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zona: 4
   multiplicadorDanio: 0.7
---- !u!1 &1309261973 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -1200856079203341021, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-  m_PrefabInstance: {fileID: 797400948}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1309261975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1309261973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6aed9b2d6b5b5a46be168967a915886, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  danio: 10
-  animacionesAtaque:
-  - Golpe Gancho Arriba
-  - GanchoArriba
-  - Golpe Bajo
-  - GolpeBajo
-  - Patada Voladora Combo
-  - PatadaVoladora
-  - Patada con Salto
-  - PatadaConSalto
-  - Amague y Patada
-  - AmaguePatada
-  - Amague y Patada Avanzada
-  - AmaguePatadaAvanzada
-  - Patada a la Cabeza
-  - PatadaCabeza
-  - Gancho Derecho
-  - GanchoDerecho
-  - Golpes de Rodilla Combo
-  - RodillaCombo
-  - Fireball
-  animator: {fileID: 347989630}
---- !u!65 &1309261976
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1309261973}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1324007614 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2431954984272822612, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
@@ -2998,12 +3052,46 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.28174508, y: 0.34615362, z: 0.2700025}
   m_Center: {x: 0.0032559426, y: 0.15803874, z: 0.06658474}
+--- !u!114 &1463383611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463383606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6aed9b2d6b5b5a46be168967a915886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  danio: 10
+  animacionesAtaque:
+  - Golpe Gancho Arriba
+  - GanchoArriba
+  - Golpe Bajo
+  - GolpeBajo
+  - Patada Voladora Combo
+  - PatadaVoladora
+  - Patada con Salto
+  - PatadaConSalto
+  - Amague y Patada
+  - AmaguePatada
+  - Amague y Patada Avanzada
+  - AmaguePatadaAvanzada
+  - Patada a la Cabeza
+  - PatadaCabeza
+  - Gancho Derecho
+  - GanchoDerecho
+  - Golpes de Rodilla Combo
+  - RodillaCombo
+  - Fireball
+  animator: {fileID: 347989630}
 --- !u!1 &1470413005 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -9070493210130169274, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
@@ -3044,66 +3132,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zona: 3
   multiplicadorDanio: 0.7
---- !u!1 &1470534230 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2898355158428612036, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-  m_PrefabInstance: {fileID: 1232969576}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1470534232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470534230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6aed9b2d6b5b5a46be168967a915886, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  danio: 10
-  animacionesAtaque:
-  - Golpe Gancho Arriba
-  - GanchoArriba
-  - Golpe Bajo
-  - GolpeBajo
-  - Patada Voladora Combo
-  - PatadaVoladora
-  - Patada con Salto
-  - PatadaConSalto
-  - Amague y Patada
-  - AmaguePatada
-  - Amague y Patada Avanzada
-  - AmaguePatadaAvanzada
-  - Patada a la Cabeza
-  - PatadaCabeza
-  - Gancho Derecho
-  - GanchoDerecho
-  - Golpes de Rodilla Combo
-  - RodillaCombo
-  - Fireball
-  animator: {fileID: 1603414270}
---- !u!65 &1470534233
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470534230}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1560213983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6170625038081293824, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
@@ -3178,66 +3206,6 @@ MonoBehaviour:
   - RodillaCombo
   - Fireball
   animator: {fileID: 0}
---- !u!1 &1600576681 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2898355158428612036, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-  m_PrefabInstance: {fileID: 797400948}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1600576683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600576681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6aed9b2d6b5b5a46be168967a915886, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  danio: 10
-  animacionesAtaque:
-  - Golpe Gancho Arriba
-  - GanchoArriba
-  - Golpe Bajo
-  - GolpeBajo
-  - Patada Voladora Combo
-  - PatadaVoladora
-  - Patada con Salto
-  - PatadaConSalto
-  - Amague y Patada
-  - AmaguePatada
-  - Amague y Patada Avanzada
-  - AmaguePatadaAvanzada
-  - Patada a la Cabeza
-  - PatadaCabeza
-  - Gancho Derecho
-  - GanchoDerecho
-  - Golpes de Rodilla Combo
-  - RodillaCombo
-  - Fireball
-  animator: {fileID: 347989630}
---- !u!65 &1600576684
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600576681}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1603414261 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
@@ -3340,7 +3308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59fdbf53210457e40a0edc47d993a37a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaMaxima: 100
+  vidaMaxima: 110
   vidaActual: 100
 --- !u!95 &1603414270 stripped
 Animator:
@@ -3421,66 +3389,6 @@ MonoBehaviour:
   - RodillaCombo
   - Fireball
   animator: {fileID: 1603414270}
---- !u!1 &1713477828 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -1703473491307067327, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-  m_PrefabInstance: {fileID: 797400948}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1713477830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713477828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6aed9b2d6b5b5a46be168967a915886, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  danio: 10
-  animacionesAtaque:
-  - Golpe Gancho Arriba
-  - GanchoArriba
-  - Golpe Bajo
-  - GolpeBajo
-  - Patada Voladora Combo
-  - PatadaVoladora
-  - Patada con Salto
-  - PatadaConSalto
-  - Amague y Patada
-  - AmaguePatada
-  - Amague y Patada Avanzada
-  - AmaguePatadaAvanzada
-  - Patada a la Cabeza
-  - PatadaCabeza
-  - Gancho Derecho
-  - GanchoDerecho
-  - Golpes de Rodilla Combo
-  - RodillaCombo
-  - Fireball
-  animator: {fileID: 347989630}
---- !u!65 &1713477831
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713477828}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1853971953
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,66 +3550,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zona: 2
   multiplicadorDanio: 1
---- !u!1 &1910283943 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -1200856079203341021, guid: 1a7e329a2db9a944f8272ff977a0d260, type: 3}
-  m_PrefabInstance: {fileID: 1232969576}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1910283945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910283943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6aed9b2d6b5b5a46be168967a915886, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  danio: 10
-  animacionesAtaque:
-  - Golpe Gancho Arriba
-  - GanchoArriba
-  - Golpe Bajo
-  - GolpeBajo
-  - Patada Voladora Combo
-  - PatadaVoladora
-  - Patada con Salto
-  - PatadaConSalto
-  - Amague y Patada
-  - AmaguePatada
-  - Amague y Patada Avanzada
-  - AmaguePatadaAvanzada
-  - Patada a la Cabeza
-  - PatadaCabeza
-  - Gancho Derecho
-  - GanchoDerecho
-  - Golpes de Rodilla Combo
-  - RodillaCombo
-  - Fireball
-  animator: {fileID: 1603414270}
---- !u!65 &1910283946
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1910283943}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

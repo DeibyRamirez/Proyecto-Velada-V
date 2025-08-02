@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Preparadorcombate : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Preparadorcombate : MonoBehaviour
     public SeleccionPersonaje seleccionPersonaje;
 
     public ControlPantalla controlPantalla;
+
 
     public void PrepararDatosYPelear()
     {
@@ -24,6 +26,8 @@ public class Preparadorcombate : MonoBehaviour
         DatosCombate.nombreMapa = datosMapa.nombre;
         DatosCombate.nombreJugador1 = datosJugador1.nombre;
         DatosCombate.nombreJugador2 = datosJugador2.nombre;
+
+
 
         Debug.Log($"Jugador 1: {DatosCombate.nombreJugador1}");
         Debug.Log($"Jugador 2: {DatosCombate.nombreJugador2}");
@@ -52,4 +56,17 @@ public class Preparadorcombate : MonoBehaviour
         Debug.Log("Combate reiniciado. Todos los peleadores han sido restaurados a su estado inicial.");
 
     }
+
+    public void JugarContraJugador()
+    {
+        DatosCombate.tipoPelea = TipoPelea.JugadorVsJugador;
+        controlPantalla.IrPantalla(2); // Ir a pantalla de selección de mapa
+    }
+
+    public void JugarContraCPU()
+    {
+        DatosCombate.tipoPelea = TipoPelea.JugadorVsCPU;
+        controlPantalla.IrPantalla(2); // Ir a pantalla de selección de mapa
+    }
+
 }

@@ -5,11 +5,16 @@ using TMPro;
 
 public class ControlRondas : MonoBehaviour
 {
+    [Header("Configuración de Rondas")]
     public int totalRondas = 3;
     public float duracionRound = 60f;
 
-    public TextMeshProUGUI textoReloj;    // Asignar desde el Inspector
-    public TextMeshProUGUI textoRondas;   // Asignar desde el Inspector
+    [Header("UI")]
+    public TextMeshProUGUI textoReloj;
+    public TextMeshProUGUI textoRondas;
+
+    [Header("Audio")]
+    public ControlMusica controlMusica;
 
     private float tiempoRestante;
     private int rondaActual = 1;
@@ -22,171 +27,219 @@ public class ControlRondas : MonoBehaviour
     private Salud saludJugador1;
     private Salud saludJugador2;
 
-    // 👉 LLAMAR ESTE MÉTODO DESDE EL BOTÓN
+    private Vector3 posicionInicialJugador1;
+    private Vector3 posicionInicialJugador2;
+
+    private Quaternion rotacionInicialJugador1;
+    private Quaternion rotacionInicialJugador2;
+
     public void IniciarCombateDesdeBoton()
     {
+        DatosCombate.nombreGanador = "";
         StartCoroutine(EsperarYPoblarPeleadores());
     }
 
-    IEnumerator EsperarYPoblarPeleadores()
+    private IEnumerator EsperarYPoblarPeleadores()
     {
-        Debug.Log("Esperando a que los peleadores se carguen...");
         GameObject[] personajes = null;
-
         while (personajes == null || personajes.Length < 2)
         {
             personajes = GameObject.FindGameObjectsWithTag("Personaje");
             yield return null;
         }
 
-        saludJugador1 = personajes[0].GetComponent<Salud>();
-        saludJugador2 = personajes[1].GetComponent<Salud>();
+        // Según tu orden: índice 0 → peleador controlado por CPU, índice 1 → peleador controlado por jugador
+        GameObject cpuGO = personajes[0];
+        GameObject jugadorGO = personajes[1];
 
-        Debug.Log("¡Peleadores encontrados! Iniciando primera ronda...");
+        // 1) Deshabilita el límite en el bot
+        var limitBot = cpuGO.GetComponent<LimiteMovimiento>();
+        if (limitBot != null) limitBot.enabled = false;
+
+        saludJugador2 = cpuGO.GetComponent<Salud>(); // CPU es jugador 2
+        saludJugador1 = jugadorGO.GetComponent<Salud>(); // Humano es jugador 1
+
+        var mpHumano = jugadorGO.GetComponent<MovimientoPeleador>();
+        var mpCPU = cpuGO.GetComponent<MovimientoPeleador>();
+        var botCPU = cpuGO.GetComponent<PeleadorBot>();
+
+        if (DatosCombate.tipoPelea == TipoPelea.JugadorVsJugador)
+        {
+            // Ambos controlados por jugador
+            mpHumano.ConfigurarJugador(true);
+            mpCPU.ConfigurarJugador(true);
+            if (botCPU) botCPU.enabled = false;
+        }
+        else // Jugador vs CPU
+        {
+            // Sólo humano recibe input
+            mpHumano.enabled = true;
+            mpCPU.enabled = false;
+
+            if (botCPU)
+            {
+                botCPU.enabled = true;
+                botCPU.objetivo = jugadorGO.transform; // CPU persigue al humano
+            }
+        }
+
+        // Guardar posiciones/rotaciones iniciales
+        posicionInicialJugador1 = jugadorGO.transform.position;
+        posicionInicialJugador2 = cpuGO.transform.position;
+        rotacionInicialJugador1 = jugadorGO.transform.rotation;
+        rotacionInicialJugador2 = cpuGO.transform.rotation;
+
         IniciarRonda();
     }
 
-    void IniciarRonda()
+    // Agregar esta parte al método IniciarRonda() en ControlRondas
+
+    // ✅ SOLUCIÓN: Cambiar el orden
+    private void IniciarRonda()
     {
         tiempoRestante = duracionRound;
         enPelea = true;
 
+        // 1. PRIMERO reiniciar el bot (mientras está en su posición anterior)
+        var botCPU = saludJugador2.GetComponent<PeleadorBot>();
+        if (botCPU != null)
+        {
+            botCPU.enabled = false; // Desactivar temporalmente
+        }
+
+        // 2. LUEGO mover las posiciones
+        saludJugador1.gameObject.transform.position = posicionInicialJugador1;
+        saludJugador2.gameObject.transform.position = posicionInicialJugador2;
+        saludJugador1.gameObject.transform.rotation = rotacionInicialJugador1;
+        saludJugador2.gameObject.transform.rotation = rotacionInicialJugador2;
+
+        // 3. Restaurar salud y animaciones
         saludJugador1.NuevaPelea();
         saludJugador2.NuevaPelea();
+
+        var anim1 = saludJugador1.GetComponent<Animator>();
+        var anim2 = saludJugador2.GetComponent<Animator>();
+        if (anim1) anim1.Play("Boxing", 0, 0f);
+        if (anim2) anim2.Play("Boxing", 0, 0f);
+
+        // 4. FINALMENTE reactivar el bot con las nuevas posiciones
+        if (botCPU != null && DatosCombate.tipoPelea != TipoPelea.JugadorVsJugador)
+        {
+            // Esperar un frame para que las posiciones se asienten
+            StartCoroutine(ReactivarBotDespuesDeReposicionar(botCPU));
+        }
+
+        if (controlMusica != null)
+            controlMusica.ReproducirCampanaPorRonda(rondaActual);
 
         ActualizarUI();
     }
 
-    void Update()
+    private IEnumerator ReactivarBotDespuesDeReposicionar(PeleadorBot botCPU)
+    {
+        yield return new WaitForFixedUpdate();
+
+        botCPU.ReiniciarBot();
+        botCPU.enabled = true;
+
+        Debug.Log($"Bot reactivado - Posición bot: {botCPU.transform.position}, Posición objetivo: {botCPU.objetivo.position}");
+    }
+
+
+    [System.Obsolete]
+    private void Update()
     {
         if (!enPelea) return;
 
         tiempoRestante -= Time.deltaTime;
         ActualizarUI();
 
-        if (tiempoRestante <= 0)
-        {
+        if (tiempoRestante <= 0f)
             DeterminarGanadorPorTiempo();
-        }
-
-        if (saludJugador1.vidaActual <= 0 || saludJugador2.vidaActual <= 0)
-        {
-            DeterminarGanadorPorKO();
-        }
     }
 
-    void DeterminarGanadorPorTiempo()
+    [System.Obsolete]
+    public void NotificarKO(GameObject perdedor)
     {
-        Debug.Log("Fin de ronda por tiempo.");
+        if (!enPelea) return;
 
-        if (saludJugador1.vidaActual > saludJugador2.vidaActual)
-        {
-            rondasGanadasJugador1++;
-        }
-        else if (saludJugador2.vidaActual > saludJugador1.vidaActual)
-        {
+        // Si el que cayó es el humano (jugador1), gana CPU (jugador2)
+        if (perdedor == saludJugador1.gameObject)
             rondasGanadasJugador2++;
-        }
         else
-        {
-            Debug.Log("Empate en la ronda.");
-        }
-
-        TerminarRonda();
-    }
-
-    void DeterminarGanadorPorKO()
-    {
-        Debug.Log("Fin de ronda por KO.");
-
-        if (saludJugador1.vidaActual <= 0)
-        {
-            rondasGanadasJugador2++;
-        }
-        else if (saludJugador2.vidaActual <= 0)
-        {
             rondasGanadasJugador1++;
-        }
 
         TerminarRonda();
     }
 
-    void TerminarRonda()
+    [System.Obsolete]
+    private void DeterminarGanadorPorTiempo()
     {
         enPelea = false;
+        if (saludJugador1.vidaActual > saludJugador2.vidaActual)
+            rondasGanadasJugador1++;
+        else if (saludJugador2.vidaActual > saludJugador1.vidaActual)
+            rondasGanadasJugador2++;
+        TerminarRonda();
+    }
 
-        if (rondaActual < totalRondas)
+    [System.Obsolete]
+    private void TerminarRonda()
+    {
+        enPelea = false;
+        if (rondaActual >= totalRondas)
+        {
+            // Decide al final
+            string ganador = "Empate";
+            if (rondasGanadasJugador1 > rondasGanadasJugador2) ganador = DatosCombate.nombreJugador1;
+            else if (rondasGanadasJugador2 > rondasGanadasJugador1) ganador = DatosCombate.nombreJugador2;
+            MostrarGanadorFinal(ganador);
+        }
+        else
         {
             rondaActual++;
             StartCoroutine(EsperarYComenzarSiguienteRonda());
         }
-        else
-        {
-            MostrarGanadorFinal();
-        }
     }
 
-    IEnumerator EsperarYComenzarSiguienteRonda()
+    private IEnumerator EsperarYComenzarSiguienteRonda()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         IniciarRonda();
     }
 
-    void MostrarGanadorFinal()
+    [System.Obsolete]
+    private void MostrarGanadorFinal(string ganador)
     {
-        string ganadorFinal = "Empate";
-
-        if (rondasGanadasJugador1 > rondasGanadasJugador2)
-        {
-            ganadorFinal = DatosCombate.nombreJugador1;
-        }
-        else if (rondasGanadasJugador2 > rondasGanadasJugador1)
-        {
-            ganadorFinal = DatosCombate.nombreJugador2;
-        }
-
-        Debug.Log($"GANADOR FINAL: {ganadorFinal}");
-
-        ControlPantalla pantalla = FindObjectOfType<ControlPantalla>();
+        DatosCombate.nombreGanador = ganador;
+        var pantalla = FindObjectOfType<ControlPantalla>();
         if (pantalla != null)
         {
-            pantalla.SetGanador(ganadorFinal);
+            pantalla.SetGanador(ganador);
             pantalla.IrPantalla(5);
         }
     }
 
-    void ActualizarUI()
+    private void ActualizarUI()
     {
         if (textoReloj != null)
         {
-            int minutos = Mathf.FloorToInt(tiempoRestante / 60f);
-            int segundos = Mathf.FloorToInt(tiempoRestante % 60f);
-            textoReloj.text = string.Format("{0:00}:{1:00}", minutos, segundos);
+            int min = Mathf.FloorToInt(tiempoRestante / 60f);
+            int sec = Mathf.FloorToInt(tiempoRestante % 60f);
+            textoReloj.text = $"{min:00}:{sec:00}";
         }
-
         if (textoRondas != null)
         {
-            textoRondas.text = $"Ronda {rondaActual}/3\n" +
-                               $"{DatosCombate.nombreJugador1}: {rondasGanadasJugador1} | " +
-                               $"{DatosCombate.nombreJugador2}: {rondasGanadasJugador2}";
+            textoRondas.text = $"Ronda {rondaActual}/{totalRondas}";
         }
     }
-
 
     public void ReiniciarRondas()
     {
-        Debug.Log("Reiniciando sistema de rondas...");
-
         rondaActual = 1;
         rondasGanadasJugador1 = 0;
         rondasGanadasJugador2 = 0;
-        tiempoRestante = duracionRound;
-        enPelea = true;
-
-        if (saludJugador1 != null) saludJugador1.NuevaPelea();
-        if (saludJugador2 != null) saludJugador2.NuevaPelea();
-
+        enPelea = false;
         ActualizarUI();
     }
-
 }
