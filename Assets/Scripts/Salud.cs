@@ -52,6 +52,13 @@ public class Salud : MonoBehaviour
             Perdedor();
     }
 
+    //public void RecuperarVida(float cantidad)
+    //{
+    //  vidaActual = Mathf.Max(vidaActual + cantidad, 0f);
+
+    // }
+
+
 
     /// Lógica que se ejecuta al quedar KO: anima, desactiva movimiento y notifica al ControlRondas.
 
@@ -69,4 +76,6 @@ public class Salud : MonoBehaviour
         if (controlRondas != null)
             controlRondas.NotificarKO(gameObject);
     }
+
+
 }

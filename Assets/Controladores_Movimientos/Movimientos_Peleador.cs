@@ -207,6 +207,15 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Recuperar Vida"",
+                    ""type"": ""Button"",
+                    ""id"": ""989f2ed4-9403-4f63-820c-2b67ec007edc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -396,6 +405,17 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
                     ""action"": ""Fireball"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dfe858f3-f4f4-4f47-a2b3-3ed2308efd27"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Recuperar Vida"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -515,6 +535,15 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
                     ""name"": ""Fireball"",
                     ""type"": ""Button"",
                     ""id"": ""8bfafc62-3cf9-42b4-95ff-043e9c1ff54e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Recuperar Vida"",
+                    ""type"": ""Button"",
+                    ""id"": ""46421d6e-58c0-4f6c-bd84-c920ac14056c"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -664,6 +693,17 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
                     ""action"": ""Fireball"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3307ee1-98b6-4b2c-9440-9c0a4c20c9d6"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Recuperar Vida"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -685,6 +725,7 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
         m_Jugador1_GanchoDerecho = m_Jugador1.FindAction("Gancho Derecho", throwIfNotFound: true);
         m_Jugador1_GolpesdeRodillaCombo = m_Jugador1.FindAction("Golpes de Rodilla Combo", throwIfNotFound: true);
         m_Jugador1_Fireball = m_Jugador1.FindAction("Fireball", throwIfNotFound: true);
+        m_Jugador1_RecuperarVida = m_Jugador1.FindAction("Recuperar Vida", throwIfNotFound: true);
         // Jugador2
         m_Jugador2 = asset.FindActionMap("Jugador2", throwIfNotFound: true);
         m_Jugador2_Mover = m_Jugador2.FindAction("Mover", throwIfNotFound: true);
@@ -700,6 +741,7 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
         m_Jugador2_GanchoDerecho = m_Jugador2.FindAction("Gancho Derecho", throwIfNotFound: true);
         m_Jugador2_GolpesdeRodillaCombo = m_Jugador2.FindAction("Golpes de Rodilla Combo", throwIfNotFound: true);
         m_Jugador2_Fireball = m_Jugador2.FindAction("Fireball", throwIfNotFound: true);
+        m_Jugador2_RecuperarVida = m_Jugador2.FindAction("Recuperar Vida", throwIfNotFound: true);
     }
 
     ~@Movimientos_Peleador()
@@ -794,6 +836,7 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
     private readonly InputAction m_Jugador1_GanchoDerecho;
     private readonly InputAction m_Jugador1_GolpesdeRodillaCombo;
     private readonly InputAction m_Jugador1_Fireball;
+    private readonly InputAction m_Jugador1_RecuperarVida;
     /// <summary>
     /// Provides access to input actions defined in input action map "Jugador1".
     /// </summary>
@@ -857,6 +900,10 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Jugador1/Fireball".
         /// </summary>
         public InputAction @Fireball => m_Wrapper.m_Jugador1_Fireball;
+        /// <summary>
+        /// Provides access to the underlying input action "Jugador1/RecuperarVida".
+        /// </summary>
+        public InputAction @RecuperarVida => m_Wrapper.m_Jugador1_RecuperarVida;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -922,6 +969,9 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
             @Fireball.started += instance.OnFireball;
             @Fireball.performed += instance.OnFireball;
             @Fireball.canceled += instance.OnFireball;
+            @RecuperarVida.started += instance.OnRecuperarVida;
+            @RecuperarVida.performed += instance.OnRecuperarVida;
+            @RecuperarVida.canceled += instance.OnRecuperarVida;
         }
 
         /// <summary>
@@ -972,6 +1022,9 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
             @Fireball.started -= instance.OnFireball;
             @Fireball.performed -= instance.OnFireball;
             @Fireball.canceled -= instance.OnFireball;
+            @RecuperarVida.started -= instance.OnRecuperarVida;
+            @RecuperarVida.performed -= instance.OnRecuperarVida;
+            @RecuperarVida.canceled -= instance.OnRecuperarVida;
         }
 
         /// <summary>
@@ -1022,6 +1075,7 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
     private readonly InputAction m_Jugador2_GanchoDerecho;
     private readonly InputAction m_Jugador2_GolpesdeRodillaCombo;
     private readonly InputAction m_Jugador2_Fireball;
+    private readonly InputAction m_Jugador2_RecuperarVida;
     /// <summary>
     /// Provides access to input actions defined in input action map "Jugador2".
     /// </summary>
@@ -1085,6 +1139,10 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Jugador2/Fireball".
         /// </summary>
         public InputAction @Fireball => m_Wrapper.m_Jugador2_Fireball;
+        /// <summary>
+        /// Provides access to the underlying input action "Jugador2/RecuperarVida".
+        /// </summary>
+        public InputAction @RecuperarVida => m_Wrapper.m_Jugador2_RecuperarVida;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1150,6 +1208,9 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
             @Fireball.started += instance.OnFireball;
             @Fireball.performed += instance.OnFireball;
             @Fireball.canceled += instance.OnFireball;
+            @RecuperarVida.started += instance.OnRecuperarVida;
+            @RecuperarVida.performed += instance.OnRecuperarVida;
+            @RecuperarVida.canceled += instance.OnRecuperarVida;
         }
 
         /// <summary>
@@ -1200,6 +1261,9 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
             @Fireball.started -= instance.OnFireball;
             @Fireball.performed -= instance.OnFireball;
             @Fireball.canceled -= instance.OnFireball;
+            @RecuperarVida.started -= instance.OnRecuperarVida;
+            @RecuperarVida.performed -= instance.OnRecuperarVida;
+            @RecuperarVida.canceled -= instance.OnRecuperarVida;
         }
 
         /// <summary>
@@ -1331,6 +1395,13 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnFireball(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Recuperar Vida" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRecuperarVida(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Jugador2" which allows adding and removing callbacks.
@@ -1430,5 +1501,12 @@ public partial class @Movimientos_Peleador: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnFireball(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Recuperar Vida" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRecuperarVida(InputAction.CallbackContext context);
     }
 }

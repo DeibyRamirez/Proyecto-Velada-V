@@ -23,6 +23,8 @@ public class MovimientoPeleador : MonoBehaviour
     private Vector2 movimiento;
     private bool saltoPresionado;
 
+    private bool recuperarVida;
+
     // Input System
     private Movimientos_Peleador controles;
     private InputActionMap mapa;
@@ -41,6 +43,7 @@ public class MovimientoPeleador : MonoBehaviour
         mapa["Mover"].performed += ctx => movimiento = ctx.ReadValue<Vector2>();
         mapa["Mover"].canceled += ctx => movimiento = Vector2.zero;
         mapa["Saltar"].performed += ctx => saltoPresionado = true;
+        //mapa["Recuperar Vida"].performed += ctx => recuperarVida = true;
 
         // — ATAQUES SIMPLES (Triggers) —
         AsignarTrigger("Golpe Gancho Arriba", "GanchoArriba");

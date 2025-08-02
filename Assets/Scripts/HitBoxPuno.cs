@@ -12,8 +12,18 @@ public class HitBoxPuno : MonoBehaviour
         "Golpes de Rodilla Combo","RodillaCombo","Fireball"
     };
 
-    public Animator animator;     // animator del atacante
+    public Animator animator;  // Animator del personaje que ataca
+
+    private ControlMusica controlMusica;
     private bool yaGolpeo = false;
+
+    void Awake()
+    {
+        // Busca automáticamente el ControlMusica en la escena
+        controlMusica = FindObjectOfType<ControlMusica>();
+        if (controlMusica == null)
+            Debug.LogWarning("No se encontró ControlMusica en la escena.");
+    }
 
     void Update()
     {
@@ -70,9 +80,14 @@ public class HitBoxPuno : MonoBehaviour
         switch (zona)
         {
             case ZonasGolpe.Zonacuerpo.Cabeza:
-                anim.SetTrigger("ReciveGolpeCara"); break;
+                anim.SetTrigger("ReciveGolpeCara");
+                controlMusica.ReproducirAudioGente();
+                break;
+
             case ZonasGolpe.Zonacuerpo.Abdomen:
-                anim.SetTrigger("ReciveGolpeAbdomen"); break;
+                anim.SetTrigger("ReciveGolpeAbdomen");
+                controlMusica.ReproducirAudioGente();
+                break;
             default:
                 anim.SetTrigger("ReciveGolpeCuerpo"); break;
         }

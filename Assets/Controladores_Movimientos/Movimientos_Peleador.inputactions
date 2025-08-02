@@ -121,6 +121,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Recuperar Vida",
+                    "type": "Button",
+                    "id": "989f2ed4-9403-4f63-820c-2b67ec007edc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -310,6 +319,17 @@
                     "action": "Fireball",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dfe858f3-f4f4-4f47-a2b3-3ed2308efd27",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Recuperar Vida",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -429,6 +449,15 @@
                     "name": "Fireball",
                     "type": "Button",
                     "id": "8bfafc62-3cf9-42b4-95ff-043e9c1ff54e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Recuperar Vida",
+                    "type": "Button",
+                    "id": "46421d6e-58c0-4f6c-bd84-c920ac14056c",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -576,6 +605,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Fireball",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3307ee1-98b6-4b2c-9440-9c0a4c20c9d6",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Recuperar Vida",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

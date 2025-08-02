@@ -1,4 +1,5 @@
 using System.Collections;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -86,9 +87,15 @@ public class ControlMusica : MonoBehaviour
 
     public void ReproducirAudioGente()
     {
+        if (audioSource == null || audiosGente.Length == 0)
+        {
+            return;
+        }
+
         int aleatorio = Random.Range(0, audiosGente.Length);
-        audioActual = audiosGente[aleatorio];
-        audioSource.clip = audioActual;
+        AudioClip clip = audiosGente[aleatorio];
+
+        audioSource.PlayOneShot(clip);
     }
 
     public void ReproducirCampanaPorRonda(int ronda)
