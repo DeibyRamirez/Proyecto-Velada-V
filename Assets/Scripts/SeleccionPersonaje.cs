@@ -47,6 +47,7 @@ public class SeleccionPersonaje : MonoBehaviour
             personajeJugador1 = datos;
             // GUARDA EL NOMBRE EN DATOSCOMBATE
             DatosCombate.nombreJugador1 = datos.nombre;
+            DatosCombate.prefabJugador1 = datos.prefab3D; // <<< AQUÍ
             Debug.Log($"Jugador 1 seleccionado: {datos.nombre}");
             Debug.Log($"Verificación - DatosCombate.nombreJugador1: '{DatosCombate.nombreJugador1}'");
 
@@ -60,6 +61,7 @@ public class SeleccionPersonaje : MonoBehaviour
             personajeJugador2 = datos;
             // GUARDA EL NOMBRE EN DATOSCOMBATE
             DatosCombate.nombreJugador2 = datos.nombre;
+            DatosCombate.prefabJugador2 = datos.prefab3D; // <<< AQUÍ
             Debug.Log($"Jugador 2 seleccionado: {datos.nombre}");
             Debug.Log($"Verificación - DatosCombate.nombreJugador2: '{DatosCombate.nombreJugador2}'");
 
@@ -112,6 +114,10 @@ public class SeleccionPersonaje : MonoBehaviour
         // GUARDA LOS NOMBRES EN DATOSCOMBATE
         DatosCombate.nombreJugador1 = personajeJugador1.nombre;
         DatosCombate.nombreJugador2 = personajeJugador2.nombre;
+
+        DatosCombate.prefabJugador1 = personajeJugador1.prefab3D;
+        DatosCombate.prefabJugador2 = personajeJugador2.prefab3D;
+
 
         Debug.Log($"Jugador 1 aleatorio: {DatosCombate.nombreJugador1}");
         Debug.Log($"Jugador 2 aleatorio: {DatosCombate.nombreJugador2}");

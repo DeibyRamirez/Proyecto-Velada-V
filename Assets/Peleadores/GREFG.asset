@@ -15,3 +15,4 @@ MonoBehaviour:
   nombre: THE_GREFG
   imagen: {fileID: 21300000, guid: 41d25e95fcad0774fb8ab1fdcff69d23, type: 3}
   vozPresentacion: {fileID: 8300000, guid: 21ee5f1139bc4c1429da256ff47a1b22, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: e229191768a501f499178617183a4079, type: 3}

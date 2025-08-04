@@ -5,8 +5,7 @@ public class DatosPeleador : ScriptableObject
 {
     public string nombre;
     public Sprite imagen;
-
     public AudioClip vozPresentacion;
-    //public GameObject prefab3D;
 
+    public GameObject prefab3D; // <- Agrega esta línea
 }

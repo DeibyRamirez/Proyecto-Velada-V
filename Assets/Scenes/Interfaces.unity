@@ -3471,7 +3471,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: musica@gmail.com
+  m_text: blueforyou88@gmail.com
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -8170,7 +8170,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: elapodo@gmail.com
+  m_text: "elapodo.business@gmail.com\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -10689,7 +10689,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\" \" \n(\" \") \n\n- Musica ( )"
+  m_text: "Zyzyx \n(\"\") \n\n- Musica  \nUnity (Zyzyx Remix)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -10850,8 +10850,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 880109911}
   m_HandleRect: {fileID: 880109910}
   m_Direction: 0
-  m_Value: 0.5
-  m_Size: 0.862198
+  m_Value: 0.49999964
+  m_Size: 0.8621981
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13333,7 +13333,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "El Apodo \n(Stiven Ramirez) \n\n- Desarrollador\n- Dise\xF1ador\n- Modelado
+  m_text: "El Apodo \n(Steven Ramirez) \n\n- Desarrollador\n- Dise\xF1ador\n- Modelado
     3d\n- Idea del proyecto"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
